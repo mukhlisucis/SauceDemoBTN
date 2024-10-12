@@ -17,23 +17,33 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
+'memastikan textbox username terlihat pada layar'
 WebUI.verifyElementVisible(findTestObject('Login Page/textbox_username'))
 
+'melakukan input username'
 WebUI.setText(findTestObject('Login Page/textbox_username'), findTestData('Data Login').getValue(1, 1))
 
+'memastikan textbox password terlihat pada layar'
 WebUI.verifyElementVisible(findTestObject('Login Page/textbox_password'))
 
+'melakukan input password'
 WebUI.setText(findTestObject('Login Page/textbox_password'), findTestData('Data Login').getValue(2, 1))
 
+'memastikan button login dapat diclick'
 WebUI.verifyElementClickable(findTestObject('Login Page/button_login'))
 
+'melakukan click pada button login '
 WebUI.click(findTestObject('Login Page/button_login'))
 
+'memastikan label header product terlihat pada layar'
 WebUI.verifyElementVisible(findTestObject('Product Page/label_headerProduct'))
 
+'get text header'
 def headerProduct = WebUI.getText(findTestObject('Product Page/label_headerProduct'))
 
+'memastikan label header sudah sesuai'
 WebUI.verifyMatch(headerProduct, 'Products', false)
 
+'mengambil screenshot pada layar'
 WebUI.takeScreenshotAsCheckpoint('Berhasil Login')
 

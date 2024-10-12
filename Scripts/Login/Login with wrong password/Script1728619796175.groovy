@@ -17,23 +17,33 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
+'memastikan textbox username terlihat pada layar'
 WebUI.verifyElementVisible(findTestObject('Login Page/textbox_username'))
 
+'melakukan input username'
 WebUI.setText(findTestObject('Login Page/textbox_username'), findTestData('Data Login').getValue(1, 2))
 
+'memastikan textbox password terlihat pada layar'
 WebUI.verifyElementVisible(findTestObject('Login Page/textbox_password'))
 
+'melakukan input password salah'
 WebUI.setText(findTestObject('Login Page/textbox_password'), findTestData('Data Login').getValue(2, 2))
 
+'memastikan button login dapat diclick'
 WebUI.verifyElementClickable(findTestObject('Login Page/button_login'))
 
+'melakukan click pada button login'
 WebUI.click(findTestObject('Login Page/button_login'))
 
+'memastikan label alert gagal login terlihat'
 WebUI.verifyElementVisible(findTestObject('Login Page/label_alertAkunNotMatch'))
 
+'get message alert'
 def alert = WebUI.getText(findTestObject('Login Page/label_alertAkunNotMatch'))
 
+'memastikan label alert sudah sesuai'
 WebUI.verifyMatch(alert, 'Epic sadface: Username and password do not match any user in this service', false)
 
+'mengambil screenshot'
 WebUI.takeScreenshotAsCheckpoint('Login with wrong password')
 

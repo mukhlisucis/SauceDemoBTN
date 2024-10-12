@@ -17,21 +17,30 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
+'memastikan textbox username terlihat pada layar'
 WebUI.verifyElementVisible(findTestObject('Login Page/textbox_username'))
 
+'melakukan input locked username'
 WebUI.setText(findTestObject('Login Page/textbox_username'), findTestData('Data Login').getValue(1, 7))
 
+'memastikan textbox password terlihat pada layar'
 WebUI.verifyElementVisible(findTestObject('Login Page/textbox_password'))
 
+'melakukan input password'
 WebUI.setText(findTestObject('Login Page/textbox_password'), findTestData('Data Login').getValue(2, 7))
 
+'memastikan button login dapat diclock'
 WebUI.verifyElementClickable(findTestObject('Login Page/button_login'))
 
+'melakukan click pada button login'
 WebUI.click(findTestObject('Login Page/button_login'))
 
+'get text alert locked user'
 def alert = WebUI.getText(findTestObject('Login Page/label_alertAkunNotMatch'))
 
+'memastikan alert sudah sesuai'
 WebUI.verifyMatch(alert, 'Epic sadface: Sorry, this user has been locked out.', false)
 
+'mengambil screenshot'
 WebUI.takeScreenshotAsCheckpoint('Locked out user')
 

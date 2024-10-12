@@ -17,13 +17,18 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
+'membuka web browser'
 WebUI.openBrowser('')
 
+'navigaate ke url yang diinginkan'
 WebUI.navigateToMaskedUrl('https://www.saucedemo.com/v1/')
 
+'mazimize window'
 WebUI.maximizeWindow()
 
+'memastikan logo login terlihat'
 WebUI.verifyElementVisible(findTestObject('Login Page/img_logoLogin'))
 
+'mengambil screenshot pada layar login'
 WebUI.takeScreenshotAsCheckpoint('Halaman Login')
 
