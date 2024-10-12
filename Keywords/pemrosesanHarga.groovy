@@ -51,4 +51,14 @@ public class pemrosesanHarga {
 		def taxToString = taxRounded.toString()
 		return taxToString
 	}
+	
+	@Keyword
+	def perhitunganItemTotalLoop(String hargaBarang1, String hargaBarang2, String hargaBarang3) {
+		def harga1 = hargaBarang1.toBigDecimal();
+		def harga2 = hargaBarang2.toBigDecimal();
+		def harga3 = hargaBarang3.toBigDecimal();
+		def total = harga1+harga2+harga3
+		def totalToString = total.toString()
+		return totalToString
+	}
 }
