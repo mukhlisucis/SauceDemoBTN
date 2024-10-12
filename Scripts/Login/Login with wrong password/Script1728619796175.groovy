@@ -20,13 +20,13 @@ import org.openqa.selenium.Keys as Keys
 'memastikan textbox username terlihat pada layar'
 WebUI.verifyElementVisible(findTestObject('Login Page/textbox_username'))
 
-'melakukan input username'
+'melakukan input username data dari excel pada kolom ke 1 baris ke 2'
 WebUI.setText(findTestObject('Login Page/textbox_username'), findTestData('Data Login').getValue(1, 2))
 
 'memastikan textbox password terlihat pada layar'
 WebUI.verifyElementVisible(findTestObject('Login Page/textbox_password'))
 
-'melakukan input password salah'
+'melakukan input password salah data pada excel kolom ke 2 baris ke 2'
 WebUI.setText(findTestObject('Login Page/textbox_password'), findTestData('Data Login').getValue(2, 2))
 
 'memastikan button login dapat diclick'
@@ -41,9 +41,9 @@ WebUI.verifyElementVisible(findTestObject('Login Page/label_alertAkunNotMatch'))
 'get message alert'
 def alert = WebUI.getText(findTestObject('Login Page/label_alertAkunNotMatch'))
 
-'memastikan label alert sudah sesuai'
+'memastikan label alert sudah sesuai dengan expected'
 WebUI.verifyMatch(alert, 'Epic sadface: Username and password do not match any user in this service', false)
 
-'mengambil screenshot'
+'mengambil screenshot login dengan password yang salah'
 WebUI.takeScreenshotAsCheckpoint('Login with wrong password')
 

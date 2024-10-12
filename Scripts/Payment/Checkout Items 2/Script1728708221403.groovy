@@ -19,11 +19,13 @@ import org.openqa.selenium.Keys as Keys
 
 'memanggil test case login dengan valid user'
 WebUI.callTestCase(findTestCase('Login/Login with valid user'), [:], FailureHandling.STOP_ON_FAILURE)
-
+'membuat variable list barang'
 def listBarang = []
 
+'membuat variable list harga'
 def listHargaClean = []
 
+'melakukan looping untuk memilih barang yang telah di tentukan pada data excel'
 for (int i = 1; i <= 3; i++) {
     'memastikan label nama produk terlihat'
     WebUI.verifyElementVisible(findTestObject('Product Page/label_namaProduct', [('namaBarang') : findTestData('Data Barang').getValue(
@@ -65,7 +67,7 @@ def jumlahItem = WebUI.getText(findTestObject('Product Page/label_jumlahItemDipi
 'memastikan jumlah yang dipilih sudah sesuai'
 WebUI.verifyMatch(listBarang.size().toString(), jumlahItem, false)
 
-'mengambil screenshot'
+'mengambil screenshot berhasil memilih barang'
 WebUI.takeFullPageScreenshotAsCheckpoint('Berhasil Memilih Barang Loop')
 
 'melakukan click pada cart / total item yang dipilih'
@@ -80,6 +82,7 @@ def haderYourCart = WebUI.getText(findTestObject('Your Cart Page/label_headerYou
 'memastikan label header your cart sudah sesuai'
 WebUI.verifyMatch(haderYourCart, 'Your Cart', false)
 
+'melakukan perulangan untuk verify data product di halaman your cart sudah sesuai dengan data yang dipilih'
 for (int i = 1; i <= listBarang.size(); i++) {
     'memastikan nama item yang dipilih di halaman your cart terlihat'
     WebUI.verifyElementVisible(findTestObject('Your Cart Page/label_namaItemCart', [('index') : i]))
@@ -154,6 +157,7 @@ def headerOverview = WebUI.getText(findTestObject('Checkout Overview Page/label_
 'memastikan label header sudah sesuai'
 WebUI.verifyMatch(headerOverview, 'Checkout: Overview', false)
 
+'melakukan perulangan untuk verify barang yang ada di halaman overview'
 for (int i = 1; i <= listBarang.size(); i++) {
     'memastikan label nama barang pada halaman checkout overview terlihat pada layar'
     WebUI.verifyElementVisible(findTestObject('Checkout Overview Page/label_namaBarangOverview', [('index') : i]))
@@ -177,6 +181,7 @@ for (int i = 1; i <= listBarang.size(); i++) {
     WebUI.verifyMatch(hargaBarangOverviewClean, listHargaClean[(i - 1)], false)
 }
 
+'melakukan perhitungan total harga item yang dipilih'
 def totalHargaPerhitungan = CustomKeywords.'pemrosesanHarga.perhitunganItemTotalLoop'(listHargaClean[0], listHargaClean[
     1], listHargaClean[2])
 

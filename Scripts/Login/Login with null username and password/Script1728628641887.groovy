@@ -29,15 +29,15 @@ WebUI.verifyElementClickable(findTestObject('Login Page/button_login'))
 'melakukan click pada button login'
 WebUI.click(findTestObject('Login Page/button_login'))
 
-'memastikan alert terlihat pada layar'
+'memastikan alert message jika tidak menginput username dan password terlihat pada layar'
 WebUI.verifyElementVisible(findTestObject('Login Page/label_alertAkunNotMatch'))
 
 'get text message alert'
 def alert = WebUI.getText(findTestObject('Login Page/label_alertAkunNotMatch'))
 
-'memastikan message alert sudah sesuai'
+'memastikan message alert sudah sesuai dengan expected'
 WebUI.verifyMatch(alert, 'Epic sadface: Username is required', false)
 
-'mengambil screenshot pada layar'
+'mengambil screenshot pada layar login dengan username dan password kosong'
 WebUI.takeScreenshotAsCheckpoint('Login with null username and password')
 

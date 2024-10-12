@@ -20,7 +20,7 @@ import org.openqa.selenium.Keys as Keys
 'memastikan textbox username terlihat'
 WebUI.verifyElementVisible(findTestObject('Login Page/textbox_username'))
 
-'melakukan input username'
+'melakukan input username dengan data excel kolom ke1 baris ke 6'
 WebUI.setText(findTestObject('Login Page/textbox_username'), findTestData('Data Login').getValue(1, 6))
 
 'memastikan textbox password terlihat'
@@ -32,15 +32,15 @@ WebUI.verifyElementClickable(findTestObject('Login Page/button_login'))
 'melakukan click pada button login'
 WebUI.click(findTestObject('Login Page/button_login'))
 
-'memastikan alert password tidak diisi terlihat'
+'memastikan alert message jika password tidak diisi terlihat'
 WebUI.verifyElementVisible(findTestObject('Login Page/label_alertAkunNotMatch'))
 
-'get text alert'
+'get text alert error message'
 def alert = WebUI.getText(findTestObject('Login Page/label_alertAkunNotMatch'))
 
-'memastikan alert sudah sesuai'
+'memastikan alert sudah sesuai dengan expected'
 WebUI.verifyMatch(alert, 'Epic sadface: Password is required', false)
 
-'mengambil screenshot'
+'mengambil screenshot login dengan password kosong'
 WebUI.takeScreenshotAsCheckpoint('Login null password')
 

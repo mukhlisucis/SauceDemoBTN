@@ -29,18 +29,18 @@ WebUI.verifyElementVisible(findTestObject('Login Page/textbox_password'))
 'melakukan input password'
 WebUI.setText(findTestObject('Login Page/textbox_password'), findTestData('Data Login').getValue(2, 7))
 
-'memastikan button login dapat diclock'
+'memastikan button login dapat diclick'
 WebUI.verifyElementClickable(findTestObject('Login Page/button_login'))
 
 'melakukan click pada button login'
 WebUI.click(findTestObject('Login Page/button_login'))
 
-'get text alert locked user'
+'get text message alert locked user'
 def alert = WebUI.getText(findTestObject('Login Page/label_alertAkunNotMatch'))
 
-'memastikan alert sudah sesuai'
+'memastikan alert sudah sesuai dengan expected'
 WebUI.verifyMatch(alert, 'Epic sadface: Sorry, this user has been locked out.', false)
 
-'mengambil screenshot'
+'mengambil screenshot locked user'
 WebUI.takeScreenshotAsCheckpoint('Locked out user')
 

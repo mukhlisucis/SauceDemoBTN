@@ -23,7 +23,7 @@ WebUI.verifyElementVisible(findTestObject('Login Page/textbox_username'))
 'memastikan textbox password terlihat pada layar'
 WebUI.verifyElementVisible(findTestObject('Login Page/textbox_password'))
 
-'melakukan input password'
+'melakukan input password dengan data excel pada kolom ke 2 baris ke 5'
 WebUI.setText(findTestObject('Login Page/textbox_password'), findTestData('Data Login').getValue(2, 5))
 
 'memastikan button login dapat diclick'
@@ -32,15 +32,15 @@ WebUI.verifyElementClickable(findTestObject('Login Page/button_login'))
 'melakukan click pada button login'
 WebUI.click(findTestObject('Login Page/button_login'))
 
-'memastikan alert terlihat'
+'memastikan alert error message terlihat'
 WebUI.verifyElementVisible(findTestObject('Login Page/label_alertAkunNotMatch'))
 
 'get text message alert'
 def alert = WebUI.getText(findTestObject('Login Page/label_alertAkunNotMatch'))
 
-'memastikan message alert sudah sesuai'
+'memastikan message alert sudah sesuai dengan expected'
 WebUI.verifyMatch(alert, 'Epic sadface: Username is required', false)
 
-'mengambil screenshot'
+'mengambil screenshot login dengan username kosong'
 WebUI.takeScreenshotAsCheckpoint('Login null username')
 

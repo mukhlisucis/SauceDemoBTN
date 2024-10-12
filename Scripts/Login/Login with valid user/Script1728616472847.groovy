@@ -20,17 +20,20 @@ import org.openqa.selenium.Keys as Keys
 'memastikan textbox username terlihat pada layar'
 WebUI.verifyElementVisible(findTestObject('Login Page/textbox_username'))
 
-'melakukan input username'
+'melakukan input username pada data excel di kolom ke 1 baris ke 1'
 WebUI.setText(findTestObject('Login Page/textbox_username'), findTestData('Data Login').getValue(1, 1))
 
 'memastikan textbox password terlihat pada layar'
 WebUI.verifyElementVisible(findTestObject('Login Page/textbox_password'))
 
-'melakukan input password'
+'melakukan input password pada data excel kolom ke 2 baris ke 1'
 WebUI.setText(findTestObject('Login Page/textbox_password'), findTestData('Data Login').getValue(2, 1))
 
 'memastikan button login dapat diclick'
 WebUI.verifyElementClickable(findTestObject('Login Page/button_login'))
+
+'mengambil screenshot input username dan password valid'
+WebUI.takeFullPageScreenshotAsCheckpoint('Login dengan valid username dan password')
 
 'melakukan click pada button login '
 WebUI.click(findTestObject('Login Page/button_login'))
@@ -38,12 +41,12 @@ WebUI.click(findTestObject('Login Page/button_login'))
 'memastikan label header product terlihat pada layar'
 WebUI.verifyElementVisible(findTestObject('Product Page/label_headerProduct'))
 
-'get text header'
+'get text header product'
 def headerProduct = WebUI.getText(findTestObject('Product Page/label_headerProduct'))
 
-'memastikan label header sudah sesuai'
+'memastikan label header sudah sesuai dengan expected'
 WebUI.verifyMatch(headerProduct, 'Products', false)
 
-'mengambil screenshot pada layar'
+'mengambil screenshot pada layar berhasil login'
 WebUI.takeScreenshotAsCheckpoint('Berhasil Login')
 
